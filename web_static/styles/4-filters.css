@@ -1,24 +1,32 @@
-.filters {
-    background-color: white;
+.filters
+{
+    color: white;
     height: 70px;
     width: 100%;
     border: 1px solid #DDDDDD;
-    border-radius: 4px;
+    border-radius:  4px;
+    position: relative;
+    display: flex;
+    
+   
 }
 
-button {
+.filters button
+{
+    background-color: #FF5A5F;
     font-size: 18px;
-    background-color: #ff5a5f;
     color: #FFFFFF;
+    border: none;
     height: 48px;
-    border: 0;
     width: 20%;
     border-radius: 4px;
-    margin: 10px auto;
-    float: right;
-    margin-right: 20px;    
+    position: absolute;
+    right: 30px;
+    align-self: center;
 }
 
-button:hover {
-    opacity: 0.9;
+
+.filters button:hover
+{
+    opacity: 90%;
 }

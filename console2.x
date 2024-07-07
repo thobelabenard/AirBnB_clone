@@ -43,7 +43,8 @@ class HBNBCommand(cmd.Cmd):
 
     def precmd(self, line):
         """ Updates the interpreter to retrieve all instances
-        of a class in advanced ways.
+        of a class with usage:
+        <class name> . all()
         The value returned here is received by onecmd()
         """
         actions = ['all', 'count', 'destroy', 'show', 'create', 'update']
@@ -52,18 +53,36 @@ class HBNBCommand(cmd.Cmd):
                 class_name = line.split('.')[0]
                 return "{} {}".format(action, class_name)
 
+            #pattern = re.compile(rf'^\s*([a-zA-Z_]\w*)\.{action}\(\s*\"?([^"\)]+)\"?\s*\)\s*$')
+            #pattern = re.compile(rf'^\s*([a-zA-Z_]\w*)\.{action}\(([^)]+)\)\s*$')
+            """pattern = re.compile(rf'^\s*([a-zA-Z_]\w*)\.{action}\(\s*"([^"]+)"\s*\)\s*$')
+            match = pattern.match(line)
+            if match:
+                class_name = match.group(1)
+                args = match.group(2)
+
+                if action in ['show', 'destroy', 'update']:
+                    return "{} {} {}".format(action, class_name, args)
+                else:
+                    return "{} {}".format(action, class_name)
+        return line
             pattern = re.compile(rf'^\s*([a-zA-Z_]\w*)\.{action}\((.*?)\)\s*$')
             match = pattern.match(line)
             if match:
                 class_name = match.group(1)
-                args = [
-                        arg.strip('"') for arg in
-                        re.findall(r'"[^"]+"|\{[^}]+\}', match.group(2))
-                    ]
+                args = [arg.strip('"') for arg in match.group(2).split(',')]
                 if action in ['show', 'destroy', 'update']:
-                    return ("{} {} {}".format(action, class_name, ', '
-                            .join(args))
-                            )
+                    return "{} {} {}".format(action, class_name, ', '.join(args))
+                else:
+                    return "{} {}".format(action, class_name)
+        return line"""
+            pattern = re.compile(rf'^\s*([a-zA-Z_]\w*)\.{action}\((.*?)\)\s*$')
+            match = pattern.match(line)
+            if match:
+                class_name = match.group(1)
+                args = [arg.strip('"') for arg in re.findall(r'"[^"]+"|\{[^}]+\}', match.group(2))]
+                if action in ['show', 'destroy', 'update']:
+                    return "{} {} {}".format(action, class_name, ', '.join(args))
                 else:
                     return "{} {}".format(action, class_name)
         return line

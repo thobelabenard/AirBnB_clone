@@ -1,49 +1,65 @@
-.filters {
-    background-color: white;
+.filters
+{
+    color: white;
     height: 70px;
     width: 100%;
     border: 1px solid #DDDDDD;
-    border-radius: 4px;
+    border-radius:  4px;
+    position: relative;
+    display: flex;
+    
+   
 }
 
-.locations {
-    height: 100%;
-    width: 25%;
-    border-right: 1px solid #DDDDDD;
-    display: inline-block;
-    margin-left: 40px;
-}
-
-.amenities {
-    height: 100%;
-    width: 25%;
-    display: inline-block;
-    margin-left: 40px;
-}
-
-h3 {
-    font-weight: 600;
-    margin-top: 10px;
-}
-
-h4 {
-    font-weight: 400;
-    font-size: 14px;
-    margin-top: -12px;
-}
-button {
+.filters button
+{
+    background-color: #FF5A5F;
     font-size: 18px;
-    background-color: #ff5a5f;
     color: #FFFFFF;
+    border: none;
     height: 48px;
-    border: 0;
     width: 20%;
     border-radius: 4px;
-    margin: 10px auto;
-    float: right;
-    margin-right: 20px;    
+    position: absolute;
+    right: 30px;
+    align-self: center;
 }
 
-button:hover {
-    opacity: 0.9;
+
+.filters button:hover
+{
+    opacity: 90%;
+}
+
+
+.locations
+{
+    border-right: 1px solid #DDDDDD;
+}
+.locations, .amenities
+{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: black; /*for debugging*/
+}
+
+.locations h3, .amenities h3, .locations h4, .amenities h4
+{
+    margin: 0;
+}
+
+
+.locations h3, .amenities h3
+{
+  font-weight: 600
+}
+
+.locations h4, .amenities h4
+{
+   font-weight: 400;
+   font-size: 14px;
 }
